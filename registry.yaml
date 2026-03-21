@@ -1,0 +1,31 @@
+skills:
+  - name: docx-to-markdown
+    path: skills/docx-to-markdown
+    source: public
+    description: 将 Word (.docx) 文件转换为 Markdown，支持标题、列表、表格等常见结构。
+    platforms:
+      - claude-code
+      - antigravity
+      - opencode
+    tags:
+      - document
+      - docx
+      - markdown
+      - conversion
+    version: 1.0.0
+
+  - name: markdown-to-docx
+    path: skills/markdown-to-docx
+    source: public
+    description: 将 Markdown 转换为 Word 文档，并支持中国公文格式排版。
+    platforms:
+      - claude-code
+      - antigravity
+      - opencode
+    tags:
+      - document
+      - markdown
+      - docx
+      - conversion
+      - official-document
+    version: 1.0.0
