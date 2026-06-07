@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "public-ai-skills",
+  "owner": {
+    "name": "code-better-life"
+  },
+  "description": "公开 AI Skill 仓库：集中托管可分享、可迁移的 skill，可作为 Claude Code 插件市场使用。",
+  "plugins": [
+    {
+      "name": "document-conversion",
+      "source": "./",
+      "description": "文档转换技能集：docx → markdown，以及 markdown → docx（含中国公文格式排版）。",
+      "version": "1.0.0",
+      "author": {
+        "name": "code-better-life"
+      },
+      "homepage": "https://github.com/code-better-life/public-ai-skills",
+      "repository": "https://github.com/code-better-life/public-ai-skills",
+      "keywords": [
+        "document",
+        "docx",
+        "markdown",
+        "conversion",
+        "公文"
+      ],
+      "category": "productivity"
+    }
+  ]
+}

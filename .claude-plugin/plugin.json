@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "document-conversion",
+  "displayName": "Document Conversion Skills",
+  "version": "1.0.0",
+  "description": "文档转换技能集：docx → markdown，以及 markdown → docx（含中国公文格式排版）。",
+  "author": {
+    "name": "code-better-life"
+  },
+  "homepage": "https://github.com/code-better-life/public-ai-skills",
+  "repository": "https://github.com/code-better-life/public-ai-skills",
+  "license": "MIT",
+  "keywords": [
+    "document",
+    "docx",
+    "markdown",
+    "conversion",
+    "公文"
+  ]
+}

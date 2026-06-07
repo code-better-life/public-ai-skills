@@ -35,6 +35,25 @@ public-ai-skills/
 
 完整元数据见 [registry.yaml](registry.yaml)。
 
+## 作为 Claude Code 插件市场安装
+
+本仓库根目录提供了 [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json)，可直接作为 Claude Code 的插件市场（marketplace）添加。
+
+```bash
+# 添加市场（GitHub 简写、本地路径或 Git URL 均可）
+/plugin marketplace add code-better-life/public-ai-skills
+
+# 安装插件（包含 docx-to-markdown 与 markdown-to-docx 两个 skill）
+/plugin install document-conversion@public-ai-skills
+```
+
+> 通过 GitHub 简写添加时，Claude Code 会读取仓库默认分支（`main`）上的 `marketplace.json`，因此该文件需位于 `main` 分支。
+
+安装后即可使用插件内置的两个 skill：
+
+- `document-conversion:docx-to-markdown`
+- `document-conversion:markdown-to-docx`
+
 ## 快速开始
 
 ### 1. 克隆仓库
