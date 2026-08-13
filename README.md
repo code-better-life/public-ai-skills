@@ -6,6 +6,7 @@
 
 - `docx-to-markdown`
 - `markdown-to-docx`
+- `file-to-markdown`
 
 这个仓库适合作为：
 
@@ -32,6 +33,7 @@ public-ai-skills/
 |------|------|:-----------:|:-----------:|:--------:|
 | `docx-to-markdown` | Word 转 Markdown，支持标题、列表、表格等常见结构 | ✅ | ✅ | ✅ |
 | `markdown-to-docx` | Markdown 转 Word，支持中国公文格式排版 | ✅ | ✅ | ✅ |
+| `file-to-markdown` | 任意文件转 Markdown（PDF/Office/图片/音频/网页/ZIP），基于 microsoft/markitdown | ✅ | ✅ | ✅ |
 
 完整元数据见 [registry.yaml](registry.yaml)。
 
@@ -43,16 +45,17 @@ public-ai-skills/
 # 添加市场（GitHub 简写、本地路径或 Git URL 均可）
 /plugin marketplace add code-better-life/public-ai-skills
 
-# 安装插件（包含 docx-to-markdown 与 markdown-to-docx 两个 skill）
+# 安装插件（包含 docx-to-markdown、markdown-to-docx、file-to-markdown 三个 skill）
 /plugin install document-conversion@public-ai-skills
 ```
 
 > 通过 GitHub 简写添加时，Claude Code 会读取仓库默认分支（`main`）上的 `marketplace.json`，因此该文件需位于 `main` 分支。
 
-安装后即可使用插件内置的两个 skill：
+安装后即可使用插件内置的三个 skill：
 
 - `document-conversion:docx-to-markdown`
 - `document-conversion:markdown-to-docx`
+- `document-conversion:file-to-markdown`
 
 ## 快速开始
 
@@ -84,6 +87,7 @@ python3 -m pip install -r requirements.txt
 ```bash
 python3 skills/docx-to-markdown/scripts/convert_docs.py path/to/file.docx
 python3 skills/markdown-to-docx/scripts/convert_to_docx.py path/to/file.md
+python3 skills/file-to-markdown/scripts/convert_to_markdown.py path/to/file.pdf
 ```
 
 ## 发布与打包
