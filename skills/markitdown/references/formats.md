@@ -26,6 +26,37 @@
 
 `[all]` 一次装全所有可选依赖（体积较大，包含 pandas、pdfplumber、azure SDK 等）。
 
+## 安装：镜像源与 uv 的预发布坑
+
+### 镜像源实测
+
+`markitdown[all]==0.1.7` 无缓存全新安装，同一台机器同一时段依次跑（2026-08，macOS arm64 / Python 3.12）：
+
+| 源 | 地址 | 耗时 |
+|----|------|------|
+| 中科大 USTC | `https://mirrors.ustc.edu.cn/pypi/simple` | 4.8s |
+| 阿里云 | `https://mirrors.aliyun.com/pypi/simple` | 9.0s |
+| 华为云 | `https://repo.huaweicloud.com/repository/pypi/simple` | 10.4s |
+| 清华 TUNA | `https://pypi.tuna.tsinghua.edu.cn/simple` | 12.2s |
+| 官方 PyPI | `https://pypi.org/simple` | 19.1s |
+
+五个源都已同步 0.1.7。绝对数字取决于你的网络，但国内源相对官方源的 2～4 倍差距是稳定的。
+
+```bash
+pip install -i https://mirrors.ustc.edu.cn/pypi/simple 'markitdown[all]'
+# uv 用环境变量或 --index-url
+UV_INDEX_URL=https://mirrors.ustc.edu.cn/pypi/simple uv pip install --prerelease=allow 'markitdown[all]'
+```
+
+### uv 装 `[all]` 需要 `--prerelease=allow`
+
+`[all]` 包含 `az-content-understanding`，它依赖 `azure-ai-contentunderstanding>=1.2.0b1` —— 这是个预发布版本。uv 默认不接受预发布，会先长时间回溯依赖树，最后报 `... weren't enabled (try: --prerelease=allow)`。这跟镜像源快慢无关，换源不解决。
+
+- `uv pip install 'markitdown[all]'` → 失败
+- `uv pip install --prerelease=allow 'markitdown[all]'` → 正常
+- `pip install 'markitdown[all]'` → 正常（pip 对含预发布的版本约束会自动放行）
+- 只装 `[pdf,docx,pptx,xlsx]` 等子集 → 两者都正常，无需额外参数
+
 ## 云端增强
 
 | 能力 | 安装 | 用法 |

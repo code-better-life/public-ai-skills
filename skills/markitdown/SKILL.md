@@ -39,7 +39,20 @@ python3 -m pip install 'markitdown[pdf,docx,pptx,xlsx]'
 
 需要 Python 3.10+。完整的可选依赖（extras）与格式对应关系见 [references/formats.md](references/formats.md)。
 
-> 建议装在虚拟环境里：`uv venv --python=3.12 .venv && source .venv/bin/activate && uv pip install 'markitdown[all]'`
+**国内网络加镜像源**（实测比官方源快 2～4 倍，中科大最快，见 [references/formats.md](references/formats.md) 的实测数据）：
+
+```bash
+python3 -m pip install -i https://mirrors.ustc.edu.cn/pypi/simple -r requirements.txt
+```
+
+**用 uv 装 `[all]` 必须加 `--prerelease=allow`**：`[all]` 里的 `az-content-understanding` 依赖 `azure-ai-contentunderstanding>=1.2.0b1`（预发布版），不加这个参数 uv 会长时间回溯依赖后报错。pip 不受影响。
+
+```bash
+uv venv --python=3.12 .venv && source .venv/bin/activate
+uv pip install --prerelease=allow 'markitdown[all]'
+```
+
+只装部分 extras（如 `[pdf,docx,pptx,xlsx]`）时不涉及预发布依赖，uv 直接装即可。
 
 ## 使用方式
 
