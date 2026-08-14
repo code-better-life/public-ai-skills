@@ -29,3 +29,20 @@ skills:
       - conversion
       - official-document
     version: 1.0.0
+
+  - name: markitdown
+    path: skills/markitdown
+    source: public
+    description: 基于 microsoft/markitdown，把 PDF、Office、图片、音频、网页、压缩包等转换为 Markdown。
+    platforms:
+      - claude-code
+      - antigravity
+      - opencode
+    tags:
+      - document
+      - pdf
+      - office
+      - markdown
+      - conversion
+      - markitdown
+    version: 1.0.0
