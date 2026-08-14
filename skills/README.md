@@ -6,7 +6,7 @@
 
 - `docx-to-markdown`
 - `markdown-to-docx`
-- `file-to-markdown`
+- `markitdown`
 
 建议每个 skill 目录至少包含：
 

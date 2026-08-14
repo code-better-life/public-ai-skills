@@ -1,5 +1,5 @@
 ---
-name: file-to-markdown
+name: markitdown
 description: >
   把几乎任何文件转换为 Markdown：PDF、Word、PowerPoint、Excel、图片、音频、HTML、
   CSV/JSON/XML、EPub、Outlook .msg、ZIP 压缩包、Jupyter Notebook，以及网页与 YouTube URL。
@@ -21,7 +21,7 @@ tags:
 version: 1.0.0
 ---
 
-# File to Markdown Conversion
+# MarkItDown — 任意文件转 Markdown
 
 基于 [microsoft/markitdown](https://github.com/microsoft/markitdown)，把 PDF、Office 文档、图片、音频、网页、压缩包等转换为 Markdown。输出目标是"喂给 LLM 的文本"，保留标题、列表、表格、链接等结构，而不是追求人工阅读的高保真排版。
 
@@ -121,6 +121,6 @@ PDF · Word(.docx) · PowerPoint(.pptx) · Excel(.xlsx/.xls) · CSV · JSON/JSON
 
 | 场景 | 用哪个 |
 |------|--------|
-| 混合格式 / PDF / PPT / Excel / 网页 → Markdown | 本 skill |
+| 混合格式 / PDF / PPT / Excel / 网页 → Markdown | `markitdown`（本 skill） |
 | 纯 .docx 批量转换，想要 mammoth 的语义提取 | `docx-to-markdown` |
 | Markdown → Word（含中国公文格式） | `markdown-to-docx` |
