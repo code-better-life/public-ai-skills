@@ -692,6 +692,20 @@ def add_heading_text(paragraph, text, font_list, size_pt, bold=False):
     set_run_font(run, font_list, size_pt, bold=bold)
 
 
+def set_table_cell_paragraph_format(paragraph):
+    """Format a paragraph inside a table cell.
+
+    Table cells use single line spacing (not the fixed body line spacing)
+    and no first-line indent, so multi-line cell content stays compact.
+    """
+    pf = paragraph.paragraph_format
+    pf.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    pf.line_spacing = 1.0
+    pf.space_before = Pt(0)
+    pf.space_after = Pt(0)
+    pf.first_line_indent = Pt(0)
+
+
 def add_table(doc, table_lines):
     """Add a table to the document."""
     # Parse table
@@ -728,7 +742,7 @@ def add_table(doc, table_lines):
                 cell.text = ''
                 p = cell.paragraphs[0]
                 process_inline_formatting(p, cell_text, FONTS['body'], SIZE_BODY)
-                set_paragraph_format(p, LINE_SPACING_BODY)
+                set_table_cell_paragraph_format(p)
 
 
 def convert_markdown_to_docx(md_path, output_path=None):
@@ -909,6 +923,15 @@ def format_existing_docx(docx_path, output_path=None):
             paragraph.style = doc.styles['Normal']
             for run in paragraph.runs:
                 set_run_font(run, FONTS['body'], SIZE_BODY)
+    
+    # Process tables: single line spacing inside cells
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    set_table_cell_paragraph_format(paragraph)
+                    for run in paragraph.runs:
+                        set_run_font(run, FONTS['body'], SIZE_BODY)
     
     # Add page numbers
     add_page_numbers(doc)

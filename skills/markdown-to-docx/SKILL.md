@@ -123,4 +123,4 @@ python3 <SKILL_DIR>/scripts/convert_to_docx.py -o output.docx input.md
 - **双模式**：支持 Markdown → Word 转换，也支持对已有 .docx 重新排版
 - **标题导航**：生成的文档在 Word 导航窗格中可直接跳转
 - **内联格式**：支持 `**粗体**`、`*斜体*`、`<span style="color:red">彩色文字</span>`
-- **表格支持**：Markdown 表格转为 Word 表格（Table Grid 样式）
+- **表格支持**：Markdown 表格转为 Word 表格（Table Grid 样式），单元格内容使用单倍行距、无首行缩进
