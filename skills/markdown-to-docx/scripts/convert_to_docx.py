@@ -432,6 +432,18 @@ def setup_page_layout(doc):
     section.footer_distance = Cm(FOOTER_DISTANCE)
 
 
+def _clear_paragraph_indent(paragraph):
+    """Remove any inherited indent (the Normal style carries a 2-char first-line indent).
+
+    Footer paragraphs inherit from Normal, so without this the left-aligned
+    even-page page number would be pushed in by two characters.
+    """
+    pf = paragraph.paragraph_format
+    pf.first_line_indent = Pt(0)
+    pf.left_indent = Pt(0)
+    pf.right_indent = Pt(0)
+
+
 def add_page_numbers(doc):
     """Add page numbers in format '- 1 -' at footer with different alignment for odd/even pages."""
     section = doc.sections[0]
@@ -446,6 +458,7 @@ def add_page_numbers(doc):
     
     p_odd = footer_odd.paragraphs[0] if footer_odd.paragraphs else footer_odd.add_paragraph()
     p_odd.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    _clear_paragraph_indent(p_odd)
     
     # Add page number content for odd pages
     run1 = p_odd.add_run("- ")
@@ -474,6 +487,7 @@ def add_page_numbers(doc):
     
     p_even = footer_even.paragraphs[0] if footer_even.paragraphs else footer_even.add_paragraph()
     p_even.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    _clear_paragraph_indent(p_even)
     
     # Add page number content for even pages
     run1e = p_even.add_run("- ")
