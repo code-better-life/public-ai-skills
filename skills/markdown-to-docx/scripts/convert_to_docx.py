@@ -452,6 +452,20 @@ def setup_page_layout(doc):
     section.footer_distance = Cm(FOOTER_DISTANCE)
 
 
+def _reset_footer(footer):
+    """Drop whatever the footer already holds and return one fresh empty paragraph.
+
+    When reformatting an existing .docx the footer may already carry its own page
+    number (e.g. "— 1 —" with long dashes); appending to it would keep the old one.
+    """
+    for child in list(footer._element):
+        footer._element.remove(child)
+    try:
+        return footer.add_paragraph(style='Footer')
+    except KeyError:
+        return footer.add_paragraph()
+
+
 def add_page_numbers(doc):
     """Add page numbers in format '- 1 -' at footer with different alignment for odd/even pages."""
     section = doc.sections[0]
@@ -464,7 +478,7 @@ def add_page_numbers(doc):
     footer_odd = section.footer
     footer_odd.is_linked_to_previous = False
     
-    p_odd = footer_odd.paragraphs[0] if footer_odd.paragraphs else footer_odd.add_paragraph()
+    p_odd = _reset_footer(footer_odd)
     p_odd.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     clear_indent(p_odd.paragraph_format)
     
@@ -493,7 +507,7 @@ def add_page_numbers(doc):
     footer_even = section.even_page_footer
     footer_even.is_linked_to_previous = False
     
-    p_even = footer_even.paragraphs[0] if footer_even.paragraphs else footer_even.add_paragraph()
+    p_even = _reset_footer(footer_even)
     p_even.alignment = WD_ALIGN_PARAGRAPH.LEFT
     clear_indent(p_even.paragraph_format)
     
@@ -517,6 +531,11 @@ def add_page_numbers(doc):
     
     run3e = p_even.add_run(" -")
     set_run_font(run3e, FONTS['page_num'], SIZE_PAGE_NUM)
+
+    # Later sections reuse these footers instead of keeping their own old ones
+    for later in doc.sections[1:]:
+        later.footer.is_linked_to_previous = True
+        later.even_page_footer.is_linked_to_previous = True
 
 
 def parse_markdown(content):
