@@ -26,6 +26,25 @@
         "公文"
       ],
       "category": "productivity"
+    },
+    {
+      "name": "tianyancha",
+      "source": "./plugins/tianyancha",
+      "description": "天眼查开放平台企业查询：工商信息、股东、对外投资、主要人员、诉讼与经营异常。需要自备天眼查开放平台 token，并在中国大陆网络环境下使用。",
+      "version": "1.0.0",
+      "author": {
+        "name": "code-better-life"
+      },
+      "homepage": "https://github.com/code-better-life/public-ai-skills",
+      "repository": "https://github.com/code-better-life/public-ai-skills",
+      "keywords": [
+        "tianyancha",
+        "天眼查",
+        "company",
+        "工商",
+        "api"
+      ],
+      "category": "productivity"
     }
   ]
 }
