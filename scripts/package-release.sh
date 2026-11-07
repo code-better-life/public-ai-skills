@@ -12,7 +12,7 @@ rm -f "$DIST_DIR"/*.zip
 
 found_skill=0
 
-for skill_dir in "$SKILLS_DIR"/*; do
+for skill_dir in "$SKILLS_DIR"/* "$REPO_ROOT"/plugins/*/skills/*; do
     if [ ! -d "$skill_dir" ]; then
         continue
     fi
@@ -26,7 +26,7 @@ for skill_dir in "$SKILLS_DIR"/*; do
     echo "Packaging $skill_name"
 
     (
-        cd "$SKILLS_DIR"
+        cd "$(dirname "$skill_dir")"
         zip -r "$DIST_DIR/${skill_name}.zip" "$skill_name" -x "*.DS_Store"
     )
 done
@@ -39,6 +39,10 @@ fi
 (
     cd "$REPO_ROOT"
     zip -r "$DIST_DIR/all-skills.zip" skills -x "*.DS_Store"
+    for plugin_skills in plugins/*/skills; do
+        [ -d "$plugin_skills" ] || continue
+        (cd "$plugin_skills" && zip -r "$DIST_DIR/all-skills.zip" . -x "*.DS_Store")
+    done
 )
 
 echo "Artifacts created in $DIST_DIR"

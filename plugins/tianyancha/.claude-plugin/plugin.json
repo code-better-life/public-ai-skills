@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "tianyancha",
+  "displayName": "Tianyancha Company Lookup",
+  "version": "1.0.0",
+  "description": "通过天眼查开放平台 API 查询企业工商、股东、对外投资、主要人员、诉讼与经营异常信息。需要自备天眼查开放平台 token。",
+  "author": {
+    "name": "code-better-life"
+  },
+  "homepage": "https://github.com/code-better-life/public-ai-skills",
+  "repository": "https://github.com/code-better-life/public-ai-skills",
+  "license": "MIT",
+  "keywords": ["tianyancha", "天眼查", "company", "工商", "api"]
+}

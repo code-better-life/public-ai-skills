@@ -46,3 +46,15 @@ skills:
       - conversion
       - markitdown
     version: 1.0.0
+
+  - name: tianyancha
+    path: plugins/tianyancha/skills/tianyancha
+    source: public
+    description: 调用天眼查开放平台 API 查询企业工商、股东、对外投资、主要人员、诉讼与经营异常信息，需自备 token。
+    platforms:
+      - claude-code
+    tags:
+      - company
+      - tianyancha
+      - api
+    version: 1.0.0

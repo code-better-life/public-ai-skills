@@ -7,6 +7,7 @@
 - `docx-to-markdown`
 - `markdown-to-docx`
 - `markitdown`
+- `tianyancha`
 
 这个仓库适合作为：
 
@@ -21,6 +22,7 @@ public-ai-skills/
 ├── README.md
 ├── registry.yaml
 ├── skills/
+├── plugins/          # 独立插件（各自带 .claude-plugin/plugin.json 和 skills/）
 ├── adapters/
 ├── scripts/
 ├── dist/
@@ -34,6 +36,7 @@ public-ai-skills/
 | `docx-to-markdown` | Word 转 Markdown，支持标题、列表、表格等常见结构 | ✅ | ✅ | ✅ |
 | `markdown-to-docx` | Markdown 转 Word，支持中国公文格式排版 | ✅ | ✅ | ✅ |
 | `markitdown` | 任意文件转 Markdown（PDF/Office/图片/音频/网页/ZIP），基于 microsoft/markitdown | ✅ | ✅ | ✅ |
+| `tianyancha` | 天眼查开放平台企业查询（工商、股东、投资、人员、诉讼），需自备 token，仅限中国大陆网络 | ✅ | ❌ | ❌ |
 
 完整元数据见 [registry.yaml](registry.yaml)。
 
@@ -56,6 +59,14 @@ public-ai-skills/
 - `document-conversion:docx-to-markdown`
 - `document-conversion:markdown-to-docx`
 - `document-conversion:markitdown`
+
+天眼查查询是单独的插件，按需安装：
+
+```bash
+/plugin install tianyancha@public-ai-skills
+```
+
+使用前把天眼查开放平台的 token 写入 `~/.config/tianyancha/token` 或环境变量 `TIANYANCHA_TOKEN`，详见 [SKILL.md](plugins/tianyancha/skills/tianyancha/SKILL.md)。天眼查拒绝境外 IP，需要在中国大陆网络环境下使用。
 
 ## 快速开始
 
