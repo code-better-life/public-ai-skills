@@ -18,7 +18,7 @@ tags:
   - markdown
   - conversion
   - markitdown
-version: 1.0.0
+version: 1.1.0
 ---
 
 # MarkItDown — 任意文件转 Markdown
@@ -124,7 +124,7 @@ PDF · Word(.docx) · PowerPoint(.pptx) · Excel(.xlsx/.xls) · CSV · JSON/JSON
 
 - **输出定位**：面向文本分析，不保证与原文排版一致；需要精确公文排版请用 `markdown-to-docx` 反向生成。
 - **PDF**：纯文本层提取，扫描件（图片型 PDF）默认拿不到文字，需要 Azure Document Intelligence 或 OCR 插件。
-- **图片/音频**：默认只提取 EXIF 元数据；图片描述需要配置 `llm_client`，语音转写需要 `[audio-transcription]` 依赖且依赖外部识别服务。
+- **图片/音频**：默认只提取 EXIF 元数据；图片描述需要配置 `llm_client`，语音转写需要 `[audio-transcription]` 依赖且依赖外部识别服务（Google Web Speech）。转写默认按英语识别，中文音频加 `--audio-language zh-CN`（markitdown 0.1.9 起支持）。
 - **输出命名**：脚本默认在源文件旁生成同名 `.md`，不想污染源目录就加 `-o`。同一次运行内重名（`a.csv` 与 `a.xlsx` 都想写 `a.md`）会自动加 `_1`、`_2` 后缀；输出路径正好等于输入时跳过，不会自毁。
 - **扫描目录时跳过 `.md`/`.markdown`**（已经是 Markdown，转了等于复制）；显式把 `.md` 当参数传入仍会转换。
 - **stdout 干净**：脚本的进度日志走 stderr，`--stdout` 输出的是纯 Markdown，可直接管道给其他命令。

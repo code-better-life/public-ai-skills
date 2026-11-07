@@ -1,6 +1,6 @@
 # 支持格式与依赖对照
 
-对应 markitdown 0.1.7。
+对应 markitdown 0.1.9（下文镜像源测速数据测于 0.1.7）。
 
 ## 格式 → 扩展名 → 依赖 extras
 
@@ -12,7 +12,7 @@
 | Excel | `.xlsx` | `[xlsx]` | 每个 sheet 一张 Markdown 表 |
 | 旧版 Excel | `.xls` | `[xls]` | 同上 |
 | Outlook 邮件 | `.msg` | `[outlook]` | 提取 From/To/Subject 与正文 |
-| 音频 | `.wav` `.mp3` `.m4a` `.mp4` | `[audio-transcription]` | EXIF 元数据 + 语音转写（依赖外部识别服务） |
+| 音频 | `.wav` `.mp3` `.m4a` `.mp4` | `[audio-transcription]` | EXIF 元数据 + 语音转写（依赖外部识别服务，默认英语，可用 `--audio-language` 指定） |
 | YouTube | URL | `[youtube-transcription]` | 标题、描述、字幕 |
 | 图片 | `.jpg` `.jpeg` `.png` | 无 | 默认只有 EXIF 元数据；配 `llm_client` 后生成图片描述 |
 | HTML | `.html` `.htm` | 无 | Wikipedia、Bing 结果页有专门的清洗逻辑 |
