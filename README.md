@@ -8,6 +8,7 @@
 - `markdown-to-docx`
 - `markitdown`
 - `tianyancha`
+- `cninfo`
 
 这个仓库适合作为：
 
@@ -37,6 +38,7 @@ public-ai-skills/
 | `markdown-to-docx` | Markdown 转 Word，支持中国公文格式排版 | ✅ | ✅ | ✅ |
 | `markitdown` | 任意文件转 Markdown（PDF/Office/图片/音频/网页/ZIP），基于 microsoft/markitdown | ✅ | ✅ | ✅ |
 | `tianyancha` | 天眼查开放平台企业查询（工商、股东、投资、人员、诉讼），需自备 token，仅限中国大陆网络 | ✅ | ❌ | ❌ |
+| `cninfo` | 巨潮资讯网公告检索（标题关键词、公司、类别、板块、正文），下载 PDF 并转文本，不需要 key | ✅ | ❌ | ❌ |
 
 完整元数据见 [registry.yaml](registry.yaml)。
 
@@ -67,6 +69,14 @@ public-ai-skills/
 ```
 
 使用前把天眼查开放平台的 token 写入 `~/.config/tianyancha/token` 或环境变量 `TIANYANCHA_TOKEN`，详见 [SKILL.md](plugins/tianyancha/skills/tianyancha/SKILL.md)。天眼查拒绝境外 IP，需要在中国大陆网络环境下使用。
+
+巨潮资讯网公告检索也是单独的插件：
+
+```bash
+/plugin install cninfo@public-ai-skills
+```
+
+不需要 key，只要能访问 `www.cninfo.com.cn` 和 `static.cninfo.com.cn`。用法见 [SKILL.md](plugins/cninfo/skills/cninfo/SKILL.md)。
 
 ## 快速开始
 
