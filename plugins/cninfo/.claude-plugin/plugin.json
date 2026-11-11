@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "cninfo",
+  "displayName": "CNINFO Announcement Search",
+  "version": "1.0.0",
+  "description": "巨潮资讯网公告检索：按标题关键词全市场搜索、按公司/类别/板块筛选、搜正文、下载 PDF 并转文本。不需要 key。",
+  "author": {
+    "name": "code-better-life"
+  },
+  "homepage": "https://github.com/code-better-life/public-ai-skills",
+  "repository": "https://github.com/code-better-life/public-ai-skills",
+  "license": "MIT",
+  "keywords": ["cninfo", "巨潮资讯", "公告", "A股", "信息披露"]
+}

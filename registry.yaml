@@ -58,3 +58,16 @@ skills:
       - tianyancha
       - api
     version: 1.0.0
+
+  - name: cninfo
+    path: plugins/cninfo/skills/cninfo
+    source: public
+    description: 检索巨潮资讯网上市公司公告（标题关键词、公司、类别、板块、正文），下载 PDF 并转文本，不需要 key。
+    platforms:
+      - claude-code
+    tags:
+      - cninfo
+      - announcement
+      - a-share
+      - disclosure
+    version: 1.0.0
