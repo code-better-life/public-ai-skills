@@ -10,7 +10,7 @@
       "name": "document-conversion",
       "source": "./",
       "description": "文档转换技能集：docx → markdown、markdown → docx（含中国公文格式排版），以及基于 markitdown 的任意文件 → markdown。",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "author": {
         "name": "code-better-life"
       },

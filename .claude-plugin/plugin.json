@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "document-conversion",
   "displayName": "Document Conversion Skills",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "文档转换技能集：docx → markdown、markdown → docx（含中国公文格式排版），以及基于 markitdown 的任意文件 → markdown。",
   "author": {
     "name": "code-better-life"

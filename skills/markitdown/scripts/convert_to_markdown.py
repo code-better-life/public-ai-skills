@@ -150,6 +150,10 @@ def main():
         "-p", "--use-plugins", action="store_true", help="启用第三方 markitdown 插件"
     )
     parser.add_argument(
+        "--audio-language",
+        help="音频转写语言，如 zh-CN；不填时 markitdown 默认 en-US（需 markitdown>=0.1.9）",
+    )
+    parser.add_argument(
         "--keep-data-uris",
         action="store_true",
         help="保留 data URI（如 base64 图片），默认截断",
@@ -169,6 +173,10 @@ def main():
     log(f"Found {len(inputs)} item(s) to convert.")
     converter = MarkItDown(enable_plugins=args.use_plugins)
 
+    convert_kwargs = {"keep_data_uris": args.keep_data_uris}
+    if args.audio_language:
+        convert_kwargs["language"] = args.audio_language
+
     failures = missing
     taken = set()
     for source in inputs:
@@ -183,7 +191,7 @@ def main():
 
         log(f"Processing: {source}")
         try:
-            result = converter.convert(source, keep_data_uris=args.keep_data_uris)
+            result = converter.convert(source, **convert_kwargs)
         except Exception as exc:  # markitdown 对不支持的格式会抛异常
             log(f"Error converting {source}: {exc}")
             failures += 1
